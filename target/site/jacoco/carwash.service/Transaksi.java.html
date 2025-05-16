@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Transaksi.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">carwash</a> &gt; <a href="index.source.html" class="el_package">carwash.service</a> &gt; <span class="el_source">Transaksi.java</span></div><h1>Transaksi.java</h1><pre class="source lang-java linenums">package carwash.service;
+
+import carwash.model.Kendaraan;
+import carwash.model.Pelanggan;
+import carwash.layanan.LayananPencucian;
+
+import java.util.logging.Logger;
+
+public class Transaksi {
+<span class="fc" id="L10">    private static final Logger logger = Logger.getLogger(Transaksi.class.getName());</span>
+
+    private Pelanggan pelanggan;
+    private Kendaraan kendaraan;
+    private LayananPencucian layanan;
+    private boolean sudahBayar;
+
+<span class="fc" id="L17">    public Transaksi(Pelanggan pelanggan, Kendaraan kendaraan, LayananPencucian layanan) {</span>
+<span class="fc" id="L18">        this.pelanggan = pelanggan;</span>
+<span class="fc" id="L19">        this.kendaraan = kendaraan;</span>
+<span class="fc" id="L20">        this.layanan = layanan;</span>
+<span class="fc" id="L21">        this.sudahBayar = false;</span>
+<span class="fc" id="L22">    }</span>
+
+    public void tampilkanStruk(String jenisKendaraan) {
+<span class="fc" id="L25">        logger.info(&quot;--- STRUK PENCUCIAN ---&quot;);</span>
+<span class="fc" id="L26">        pelanggan.tampilkanInfo();</span>
+<span class="fc" id="L27">        kendaraan.infoKendaraan();</span>
+<span class="fc" id="L28">        logger.info(&quot;Layanan: &quot; + layanan.getDeskripsi());</span>
+<span class="pc bpc" id="L29" title="1 of 2 branches missed.">        if (logger.isLoggable(java.util.logging.Level.INFO)) {</span>
+<span class="fc" id="L30">            logger.info(String.format(&quot;Harga: Rp%d&quot;, layanan.getHarga(jenisKendaraan)));</span>
+        }
+<span class="pc bpc" id="L32" title="1 of 2 branches missed.">        if (logger.isLoggable(java.util.logging.Level.INFO)) {</span>
+<span class="fc bfc" id="L33" title="All 2 branches covered.">            logger.info(String.format(&quot;Status Pembayaran: %s&quot;, sudahBayar ? &quot;Sudah Dibayar&quot; : &quot;Belum Dibayar&quot;));</span>
+        }
+<span class="fc" id="L35">    }</span>
+
+    public boolean isSudahBayar() {
+<span class="fc" id="L38">        return sudahBayar;</span>
+    }
+
+    public void bayar() {
+<span class="fc" id="L42">        this.sudahBayar = true;</span>
+<span class="fc" id="L43">    }</span>
+
+    public Pelanggan getPelanggan() {
+<span class="fc" id="L46">        return pelanggan;</span>
+    }
+
+    public Kendaraan getKendaraan() {
+<span class="fc" id="L50">        return kendaraan;</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.8.202204050719</span></div></body></html>
